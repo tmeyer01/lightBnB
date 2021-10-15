@@ -207,7 +207,6 @@ const getAllProperties = function (options, limit = 10) {
     });
 };
 
-
 exports.getAllProperties = getAllProperties;
 
 /**
@@ -217,8 +216,8 @@ exports.getAllProperties = getAllProperties;
  */
 const addProperty = function (property) {
   return pool
-  .query( 
-    `
+    .query(
+      `
     INSERT INTO properties (
       owner_id,
       title,
@@ -251,13 +250,14 @@ const addProperty = function (property) {
         property.country,
         property.parking_spaces,
         property.number_of_bathrooms,
-        property.number_of_bedrooms
-      ])
-  .then((result)=>{
-    return result.rows[0]
-  })
-  .catch((err)=> {
-    console.log(err.message);
-  });
+        property.number_of_bedrooms,
+      ]
+    )
+    .then((result) => {
+      return result.rows[0];
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
 };
 exports.addProperty = addProperty;
